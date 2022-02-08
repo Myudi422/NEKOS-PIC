@@ -24,6 +24,7 @@
 import requests
 import nekos
 import os
+import random
 
 from telegram.ext import (CallbackContext,
                           run_async)
@@ -37,7 +38,8 @@ delete_button = 'Delete'
 
 def neko(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
-    target = "neko"
+    photo_list=["neko", "wallpaper", "feed")]
+    target = "random.choice(photo_list)"
     link = nekos.img(target)
     link = link[23:],
     keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.nekos.life/{link[0]}")]]
@@ -201,7 +203,7 @@ def lewd(update: Update, context: CallbackContext) -> None:
 
 def feed(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
-    target = "feed, pat"
+    target = "feed", "wallpaper"
     link = nekos.img(target)
     keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
     msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
