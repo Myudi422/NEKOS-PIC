@@ -317,7 +317,7 @@ def poke(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     target = "poke"
     link = nekos.img(target)
-    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete"), InlineKeyboardButton(text=f"Direct link",url=link)]]
+    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
     msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
 
 
@@ -432,7 +432,7 @@ def hentaigif(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     target = "random_hentai_gif"
     link = nekos.img(target)
-    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete"), InlineKeyboardButton(text=f"Direct link",url=link)]]
+    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
     msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
 
 
@@ -440,7 +440,7 @@ def classic(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     target = "classic"
     link = nekos.img(target)
-    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete"), InlineKeyboardButton(text=f"Direct link",url=link)]]
+    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
     msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
 
 
@@ -448,7 +448,7 @@ def kuni(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     target = "kuni"
     link = nekos.img(target)
-    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete"), InlineKeyboardButton(text=f"Direct link",url=link)]]
+    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
     msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
 
 
@@ -487,7 +487,7 @@ def cuddle(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     target = "cuddle"
     link = nekos.img(target)
-    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete"), InlineKeyboardButton(text=f"Direct link",url=link)]]
+    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
     msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
 
 
@@ -515,7 +515,7 @@ def titsgif(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     target = "boobs"
     link = nekos.img(target)
-    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete"), InlineKeyboardButton(text=f"Direct link",url=link)]]
+    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
     msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
 
 
@@ -534,7 +534,7 @@ def smug(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     target = "smug"
     link = nekos.img(target)
-    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete"), InlineKeyboardButton(text=f"Direct link",url=link)]]
+    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
     msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
 
 
@@ -543,7 +543,7 @@ def baka(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     target = "baka"
     link = nekos.img(target)
-    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete"), InlineKeyboardButton(text=f"Direct link",url=link)]]
+    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
     msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
     
 
