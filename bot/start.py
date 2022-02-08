@@ -29,7 +29,7 @@ from telegram.ext import CallbackContext
 from bot.String import String
 
 
-def start(update: Update, context: CallbackContext) -> None:
+def pic(update: Update, context: CallbackContext) -> None:
     keyboard = [
             [
                 InlineKeyboardButton(text="Commands available ❔",
