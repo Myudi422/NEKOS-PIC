@@ -33,7 +33,7 @@ def pic(update: Update, context: CallbackContext) -> None:
     keyboard = [
             [
                 InlineKeyboardButton(text="Commands available ❔",
-                                     callback_data="zero_help")
+                                     callback_data="zero_help1")
             ],
             [
                 InlineKeyboardButton(text="Source",
