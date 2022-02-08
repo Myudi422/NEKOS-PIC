@@ -56,7 +56,6 @@ logger = logging.getLogger(__name__)
 
         
 updater = Updater(CONFIG['bot_token'], use_context=True)
-updater.dispatcher.bot.set_my_commands(COMMANDS)
 
 updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(CommandHandler('help', chelp))
