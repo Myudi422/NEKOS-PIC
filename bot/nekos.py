@@ -454,8 +454,10 @@ def waifu(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     target = "waifu"
     link = nekos.img(target)
-    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
-    msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
+    link = link[23:],
+    keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.nekos.life/{link[0]}")]]
+    keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}")]]
+    msg.reply_photo(f"https://cdn.nekos.life/{link[0]}",reply_markup=InlineKeyboardMarkup(keyboard))
 
 
 
