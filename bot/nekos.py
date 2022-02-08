@@ -201,7 +201,7 @@ def lewd(update: Update, context: CallbackContext) -> None:
 
 def feed(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
-    target = "feed, fat"
+    target = "feed, pat"
     link = nekos.img(target)
     keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
     msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
