@@ -288,7 +288,7 @@ def kemonomimi(update: Update, context: CallbackContext) -> None:
 
 
 
-def nsfw_avatar(update: Update, context: CallbackContext) -> None:
+def avatarlewd(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     target = "nsfw_avatar"
     link = nekos.img(target)
