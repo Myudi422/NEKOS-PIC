@@ -38,7 +38,7 @@ delete_button = 'Delete'
 
 def neko(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
-    photo_list=["neko", "wallpaper", "feed")]
+    photo_list=["neko", "wallpaper", "feed"]
     target = "random.choice(photo_list)"
     link = nekos.img(target)
     link = link[23:],
