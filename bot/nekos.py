@@ -462,7 +462,7 @@ def kiss(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     target = "kiss"
     link = nekos.img(target)
-    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete", {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
+    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
     msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
 
 
