@@ -29,7 +29,7 @@ from telegram.ext import CallbackContext
 from bot.String import String
 
 
-def chelp(update: Update, context: CallbackContext) -> None:
+def chelp1(update: Update, context: CallbackContext) -> None:
     keyboard = [
             [
                 InlineKeyboardButton(text="Go back",
@@ -42,7 +42,7 @@ def chelp(update: Update, context: CallbackContext) -> None:
             parse_mode=ParseMode.MARKDOWN
     )
     
-def help(update: Update, context: CallbackContext) -> None:
+def help1(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     if query.data == "zero_help":
         keyboard = [
