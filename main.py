@@ -29,8 +29,8 @@ from telegram.ext import (
     CommandHandler,
     CallbackQueryHandler
 )
-from bot.pic import pic
-from bot.help1 import help1, chelp
+from bot.start import start
+from bot.help import help, chelp
 from bot.nekos import *
 from bot.nekos_fun import asfile
 
@@ -57,9 +57,9 @@ logger = logging.getLogger(__name__)
         
 updater = Updater(CONFIG['bot_token'], use_context=True)
 
-updater.dispatcher.add_handler(CommandHandler('pic', pic))
-updater.dispatcher.add_handler(CommandHandler('help1', chelp))
-updater.dispatcher.add_handler(CallbackQueryHandler(help1, pattern='zero_.*'))
+updater.dispatcher.add_handler(CommandHandler('start', start))
+updater.dispatcher.add_handler(CommandHandler('help', chelp))
+updater.dispatcher.add_handler(CallbackQueryHandler(help, pattern='zero_.*'))
 updater.dispatcher.add_handler(CallbackQueryHandler(asfile, pattern='neko_.*'))
 
 updater.dispatcher.add_handler(CommandHandler("lewdkemo", lewdkemo))

@@ -42,7 +42,7 @@ def chelp(update: Update, context: CallbackContext) -> None:
             parse_mode=ParseMode.MARKDOWN
     )
     
-def help1(update: Update, context: CallbackContext) -> None:
+def help(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
     if query.data == "zero_help":
         keyboard = [
