@@ -335,7 +335,7 @@ def anal(update: Update, context: CallbackContext) -> None:
 
 def hentai(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
-    target = "waifu"
+    target = "hentai"
     link = nekos.img(target)
     link = link[23:],
     keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.nekos.life/{link[0]}")]]
