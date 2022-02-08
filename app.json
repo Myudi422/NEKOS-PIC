@@ -1,0 +1,27 @@
+{
+  "name": "NEKO-PIC",
+  "description": "NOTHING ",
+  "logo": "https://telegra.ph/file/6a3b1febade2313dd0dca.jpg",
+  "keywords": [
+    "Youtube","YoutubeDownloader"
+  ],
+  "repository": "https://github.com/Myudi422/NEKOS-PIC",
+  "success_url": "https://t.me/tg_utubebot",
+  "website": "https://github.com/Myudi422/NEKOS-PIC",
+  "env": {
+        "BOT_TOKEN": {"description": "Get Bot Token From BotFather Bot","required": true}
+  },
+      "buildpacks": [
+        {"url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"},
+        {"url": "heroku/python"}
+    ],
+  "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    },
+      "stack": "heroku-20"
+
+
+}
