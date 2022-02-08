@@ -454,12 +454,9 @@ def kuni(update: Update, context: CallbackContext) -> None:
 def waifu(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     target = "waifu"
-    with open("temp.png", "wb") as f:
-        f.write(requests.get(nekos.img(target)).content)
-    img = Image.open("temp.png")
-    img.save("temp.webp", "webp")
-    msg.reply_document(open("temp.webp", "rb"))
-    os.remove("temp.webp")
+    link = nekos.img(target)
+    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
+    msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
 
 
 
