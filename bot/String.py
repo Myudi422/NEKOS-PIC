@@ -34,7 +34,7 @@ class String:
                       "[Zero Tsū](https://github.com/gizmostuffin/ZeroTsu/blob/main/LICENSE) is licensed under the **MIT License**\n\n"
                       "Copyright (c) 2020 Anil Chauhan (@meanii)")
     
-    HELP1_MESSAGE = ("This is a list of available commands you can try.\n\n"
+    HELP_MESSAGE = ("This is a list of available commands you can try.\n\n"
                     "• Commands to get photos:\n"
                     "/feet: Sends Random Anime Feet Images.\n"
                     "/yuri: Sends Random Yuri source Images.\n"
