@@ -345,13 +345,12 @@ def hentai(update: Update, context: CallbackContext) -> None:
 
 def avatar(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
-    target = "nsfw_avatar"
-    with open("temp.png", "wb") as f:
-        f.write(requests.get(nekos.img(target)).content)
-    img = Image.open("temp.png")
-    img.save("temp.webp", "webp")
-    msg.reply_document(open("temp.webp", "rb"))
-    os.remove("temp.webp")
+    target = "avatar"
+    link = nekos.img(target)
+    link = link[23:],
+    keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.nekos.life/{link[0]}")]]
+    keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}")]]
+    msg.reply_photo(f"https://cdn.nekos.life/{link[0]}",reply_markup=InlineKeyboardMarkup(keyboard))
 
 
 
