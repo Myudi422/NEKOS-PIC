@@ -31,6 +31,7 @@ from telegram.ext import (CallbackContext,
 from telegram import (ParseMode, Update, InlineKeyboardMarkup, 
                       InlineKeyboardButton, ReplyKeyboardMarkup, 
                       KeyboardButton)
+from bot.String import String
 
 delete_button = 'Delete'
 neko_MESSAGE = 'next'
@@ -41,7 +42,7 @@ def neko(update: Update, context: CallbackContext) -> None:
     link = nekos.img(target)
     link = link[23:],
     keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.nekos.life/{link[0]}")]]
-    keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"),InlineKeyboardButton(text="Next", callback_data="neko_next")]]
+    keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"),InlineKeyboardButton(text="Next", callback_data="zero_help")]]
     msg.reply_photo(f"https://cdn.nekos.life/{link[0]}",reply_markup=InlineKeyboardMarkup(keyboard))
     
 
