@@ -34,7 +34,7 @@ from telegram import (ParseMode, Update, InlineKeyboardMarkup,
 from bot.String import String
 
 delete_button = 'Delete'
-neko_MESSAGE = 'next'
+neko_MESSAGE = 'neko'
 
 def neko(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
