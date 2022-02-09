@@ -38,6 +38,7 @@ delete_button = 'Delete'
 
 def neko(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
+    query = update.callback_query
     target = "neko"
     link = nekos.img(target)
     link = link[23:],
