@@ -40,7 +40,7 @@ def neko(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     query = update.callback_query
     target = "neko"
-    link = nekos.img(target)
+    link = https://pic.re/image
     link = link[23:],
     keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://pic.re/image")]]
     keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"),InlineKeyboardButton(text=f"Refresh", callback_data=f"zero_help")]]
