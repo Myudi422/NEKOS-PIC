@@ -42,9 +42,9 @@ def neko(update: Update, context: CallbackContext) -> None:
     target = "neko"
     link = nekos.img(target)
     link = link[23:],
-    keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://pic.re/image/{link[0]}")]]
+    keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://pic.re/image")]]
     keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"),InlineKeyboardButton(text=f"Refresh", callback_data=f"zero_help")]]
-    msg.reply_photo(f"https://pic.re/image/{link[0]}",reply_markup=InlineKeyboardMarkup(keyboard))
+    msg.reply_photo(f"https://pic.re/image",reply_markup=InlineKeyboardMarkup(keyboard))
     
 
 
