@@ -43,7 +43,7 @@ def asfile(update: Update, context: CallbackContext) -> None:
         elif data[2] == 'neko':
             data = data[1][2:]
             data = data[:-3]
-            link = f"https://cdn.nekos.life/{data}"
+            link = f"https://pic.re/image/{data}"
             message.reply_document(link)
             
     elif query_type == "neko_delete":
