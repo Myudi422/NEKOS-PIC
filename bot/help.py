@@ -44,7 +44,7 @@ def chelp1(update: Update, context: CallbackContext) -> None:
     
 def help1(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
-    if query.data == "zero_help1":
+    if query.data == "zero_help":
         keyboard = [
             [
                 InlineKeyboardButton(text="Go back",
@@ -60,7 +60,7 @@ def help1(update: Update, context: CallbackContext) -> None:
         keyboard = [
             [
                 InlineKeyboardButton(text="Commands available ❔",
-                                     callback_data="zero_help1")
+                                     callback_data="zero_help")
             ],
             [
                 InlineKeyboardButton(text="Source",

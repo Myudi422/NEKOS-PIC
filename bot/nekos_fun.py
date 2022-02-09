@@ -49,11 +49,11 @@ def asfile(update: Update, context: CallbackContext) -> None:
     elif query_type == "neko_delete":
         if query.from_user.id == int(user_id):
             bot.answer_callback_query(query.id,
-                                      text="Deleted!"
+                                      text="foto sudah terhapus!"
                                       )
             message.delete()
         else:
             bot.answer_callback_query(query.id,
-                                      text="You're not allowed to use this."
+                                      text="kamu, tidak diizinkan, untuk menghapus!."
                                       )
        
