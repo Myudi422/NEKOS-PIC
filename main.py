@@ -64,6 +64,7 @@ updater.dispatcher.add_handler(CallbackQueryHandler(asfile, pattern='neko_.*'))
 
 updater.dispatcher.add_handler(CommandHandler("lewdkemo", lewdkemo))
 updater.dispatcher.add_handler(CommandHandler("neko", neko))
+updater.dispatcher.add_handler(CommandHandler("random", random))
 updater.dispatcher.add_handler(CommandHandler("feet", feet))
 updater.dispatcher.add_handler(CommandHandler("yuri", yuri))
 updater.dispatcher.add_handler(CommandHandler("trap", trap))
