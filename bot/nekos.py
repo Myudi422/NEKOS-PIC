@@ -333,9 +333,16 @@ def anal(update: Update, context: CallbackContext) -> None:
 
 
 def hentai(update: Update, context: CallbackContext) -> None:
+    tag = random.choice([
+        "feet", "yuri", "trap", "futanari", "hololewd", "lewdkemo",
+        "cum", "erokemo", "les", "lewdk", "lewd", "eroyuri", "eron",
+        "cum_jpg", "nsfw_neko_gif", "solo", "anal", "blowjob", "pussy",
+        "tits", "holoero", "pussy_jpg", "femdom", "spank", "erok", "boobs",
+        "ero"
+    ])
     msg = update.effective_message
     target = "hentai"
-    link = nekos.img(target)
+    link = nekos.img(tag)
     link = link[23:],
     keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.nekos.life/{link[0]}")]]
     keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}")]]
