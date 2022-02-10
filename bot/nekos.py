@@ -22,8 +22,12 @@
 
 
 import requests
+import logging
 import nekos
 import os
+import re
+from telegram import Update
+from typing import Callable, List
 import random
 
 from telegram.ext import (CallbackContext,
@@ -35,6 +39,18 @@ from telegram import (ParseMode, Update, InlineKeyboardMarkup,
 from bot.String import String
 
 delete_button = 'Delete'
+
+def send_photo(src: str, message=None):
+    """Generates a function for sending a photo with an optional message"""
+    def send(update: Update, context: CallbackContext):
+        if message != None:
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text=message)
+        context.bot.send_photo(
+            chat_id=update.effective_chat.id,
+            photo=open(f"./media/{src}", "rb"),
+        )
+    return send
 
 def neko(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
