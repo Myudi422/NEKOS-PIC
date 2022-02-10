@@ -54,7 +54,7 @@ def hp(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     query = update.callback_query
     target = "hp"
-    link = nekos.img(target)
+    link = nekos.img
     link = link[23:],
     keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, heka"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.waifu.im/{link[0]}")]]
     keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"),InlineKeyboardButton(text=f"Refresh", callback_data=f"zero_help")]]
