@@ -334,10 +334,10 @@ def anal(update: Update, context: CallbackContext) -> None:
 
 def hentai(update: Update, context: CallbackContext) -> None:
     tag = random.choice([
-        "feet", "yuri", "trap", "futanari", "hololewd", "lewdkemo",
+        "feet", "yuri", "randomHentaiGif", "lesbian", "kuni", "cumsluts", "classic", "classic", "bj", "girlSoloGif", "pussyWankGif", "pussyArt", "kitsune", "holo", "holoEro", "feetGif",  "yuri" "trap", "futanari", "hololewd", "lewdkemo",
         "cum", "erokemo", "les", "lewdk", "lewd", "eroyuri", "eron",
         "cum_jpg", "nsfw_neko_gif", "solo", "anal", "blowjob", "pussy",
-        "tits", "holoero", "pussy_jpg", "femdom", "spank", "erok", "boobs",
+        "tits", "pussy_jpg", "femdom", "spank", "erok", "boobs",
         "ero"
     ])
     msg = update.effective_message
