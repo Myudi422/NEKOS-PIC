@@ -24,7 +24,6 @@
 import requests
 import logging
 import nekos
-from telegram.ext.dispatcher import run_async
 import os
 import re
 from telegram import Update
@@ -64,7 +63,6 @@ def get_image_url():
         file_extension = re.search("([^.]*)$",url).group(1).lower()
     return url
 
-@run_async
 def bop(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     url = get_image_url()
