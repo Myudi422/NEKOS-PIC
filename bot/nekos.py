@@ -24,6 +24,7 @@
 import requests
 import logging
 import nekos
+from telegram.ext.dispatcher import run_async
 import os
 import re
 from telegram import Update
@@ -50,7 +51,25 @@ def neko(update: Update, context: CallbackContext) -> None:
     keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"),InlineKeyboardButton(text=f"Refresh", callback_data=f"zero_help")]]
     msg.reply_photo(f"https://cdn.nekos.life/{link[0]}",reply_markup=InlineKeyboardMarkup(keyboard))
     
+def get_url():
+    contents = requests.get('https://api.waifu.im/sfw/waifu').json()
+    url = contents['url']
+    return url
 
+def get_image_url():
+    allowed_extension = ['jpg','jpeg','png']
+    file_extension = ''
+    while file_extension not in allowed_extension:
+        url = get_url()
+        file_extension = re.search("([^.]*)$",url).group(1).lower()
+    return url
+
+@run_async
+def bop(update: Update, context: CallbackContext) -> None:
+    msg = update.effective_message
+    url = get_image_url()
+    chat_id = update.message.chat_id
+    context.bot.send_photo(chat_id=chat_id, photo=url)
 
 def feet(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
