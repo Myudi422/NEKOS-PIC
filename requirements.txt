@@ -3,4 +3,3 @@ nekos.py
 requests
 Pillow
 pyyaml
-run_async
