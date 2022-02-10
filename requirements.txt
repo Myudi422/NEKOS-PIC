@@ -3,3 +3,5 @@ nekos.py
 requests
 Pillow
 pyyaml
+telegram.ext.dispatcher
+run_async
