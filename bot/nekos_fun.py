@@ -37,7 +37,7 @@ def asfile(update: Update, context: CallbackContext) -> None:
         if data[2] == 'hexa':
             data = data[1][2:]
             data = data[:-3]
-            link = f"https://dva.computerfreaker.cf/{data}"
+            link = f"https://cdn.waifu.im/{data}"
             message.reply_document(link)
             
         elif data[2] == 'neko':
