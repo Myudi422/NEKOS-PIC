@@ -38,7 +38,7 @@ from telegram import (ParseMode, Update, InlineKeyboardMarkup,
                       KeyboardButton)
 from bot.String import String
 
-delete_button = 'Delete'
+delete_button = 'Hapus'
 
 def neko(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
@@ -49,16 +49,7 @@ def neko(update: Update, context: CallbackContext) -> None:
     keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.nekos.life/{link[0]}")]]
     keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"),InlineKeyboardButton(text=f"Refresh", callback_data=f"zero_help")]]
     msg.reply_photo(f"https://cdn.nekos.life/{link[0]}",reply_markup=InlineKeyboardMarkup(keyboard))
-
-def hp(update: Update, context: CallbackContext) -> None:
-    msg = update.effective_message
-    query = update.callback_query
-    target = "https://waifu.im/sfw/waifu/"
-    link = nekos.img(target)
-    link = link[23:],
-    keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, heka"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.waifu.im/{link[0]}")]]
-    keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"),InlineKeyboardButton(text=f"Refresh", callback_data=f"zero_help")]]
-    msg.reply_photo(f"https://cdn.waifu.im/{link[0]}",reply_markup=InlineKeyboardMarkup(keyboard))    
+   
 
 def feet(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
@@ -346,17 +337,17 @@ def anal(update: Update, context: CallbackContext) -> None:
 
 def hentai(update: Update, context: CallbackContext) -> None:
     tag = random.choice([
-        "feet", "yuri", "randomHentaiGif", "lesbian", "kuni", "cumsluts", "classic", "classic", "bj", "girlSoloGif", "pussyWankGif", "pussyArt", "kitsune", "holo", "holoEro", "feetGif",  "yuri" "trap", "futanari", "hololewd", "lewdkemo",
-        "cum", "erokemo", "les", "lewdk", "lewd", "eroyuri", "eron",
-        "cum_jpg", "nsfw_neko_gif", "solo", "anal", "blowjob", "pussy",
-        "tits", "pussy_jpg", "femdom", "spank", "erok", "boobs",
-        "ero"
+        "feet", "yuri", "trap", "futanari", "hololewd", "lewdkemo", "solog", "feetg", "cum", "erokemo", "les",
+        "lewdk", "ngif", "lewd", "eroyuri", "eron", "cum_jpg", "bj", "nsfw_neko_gif", "solo",
+        "nsfw_avatar", "gasm", "anal", "slap", "hentai", "avatar", "erofeet", "keta", "blowjob",
+        "pussy", "tits", "holoero", "pussy_jpg", "pwankg", "classic", "kuni", "waifu", "8ball",
+        "femdom", "spank", "erok", "boobs", "random_hentai_gif", "smallboobs", "ero", "lesbian", "pussyWankGif"
     ])
     msg = update.effective_message
     target = "hentai"
     link = nekos.img(tag)
     link = link[23:],
-    keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.nekos.life/{link[0]}")]]
+    keyboard = [[InlineKeyboardButton(text="Kirim Berkas", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.nekos.life/{link[0]}")]]
     keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}")]]
     msg.reply_photo(f"https://cdn.nekos.life/{link[0]}",reply_markup=InlineKeyboardMarkup(keyboard))
 
