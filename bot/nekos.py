@@ -41,7 +41,7 @@ from bot.String import String
 
 delete_button = 'Hapus'
 
-@bot.message_handler(commands=['foto'])
+message_handler(commands=['foto'])
 def text(message):
     chatid = message.chat.id
     bot.send_photo(chat_id, open('win8.png', 'rb'))
