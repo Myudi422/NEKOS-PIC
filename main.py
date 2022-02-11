@@ -58,7 +58,10 @@ logger = logging.getLogger(__name__)
         
 updater = Updater(CONFIG['bot_token'], use_context=True)
 
-updater.dispatcher.add_handler(CommandHandler('image', upload))
+  # Add image to bot
+  image = CommandHandler('image',upload)
+  dispatcher.add_handler(image)
+
 updater.dispatcher.add_handler(CommandHandler('pic', pic))
 updater.dispatcher.add_handler(CommandHandler('help1', chelp1))
 updater.dispatcher.add_handler(CallbackQueryHandler(help1, pattern='zero_.*'))
