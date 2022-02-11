@@ -27,7 +27,8 @@ import logging
 from telegram.ext import (
     CallbackContext,
     CommandHandler,
-    CallbackQueryHandler
+    CallbackQueryHandler,
+    CommandHandler, MessageHandler, Filters
 )
 from bot.start import pic
 from bot.help import help1, chelp1
