@@ -41,8 +41,6 @@ from bot.String import String
 
 delete_button = 'Hapus'
 
-def upload(bot, update):
-  bot.send_photo(chat_id=update.message.chat_id, photo=open('win8.png', 'rb'))
 
 def neko(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
@@ -166,7 +164,7 @@ def wallpaper(update: Update, context: CallbackContext) -> None:
     target = "wallpaper"
     link = nekos.img(target)
     link = link[23:],
-    keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.nekos.life/{link[0]}")]]
+    keyboard = [[InlineKeyboardButton(text="Kirim Berkas", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.nekos.life/{link[0]}")]]
     keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}")]]
     msg.reply_photo(f"https://cdn.nekos.life/{link[0]}",reply_markup=InlineKeyboardMarkup(keyboard))
 
