@@ -31,14 +31,18 @@ from typing import Callable, List
 import random
 
 from telegram.ext import (CallbackContext,
-                          run_async)
+                          run_async, Updater, CommandHandler, MessageHandler, Filters)
 
 from telegram import (ParseMode, Update, InlineKeyboardMarkup, 
                       InlineKeyboardButton, ReplyKeyboardMarkup, 
                       KeyboardButton)
+
 from bot.String import String
 
 delete_button = 'Hapus'
+
+def upload(bot, update):
+  bot.send_photo(chat_id=update.message.chat_id, photo=open('win8.png', 'rb'))
 
 def neko(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
