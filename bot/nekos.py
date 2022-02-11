@@ -41,11 +41,6 @@ from bot.String import String
 
 delete_button = 'Hapus'
 
-message_handler(commands=['foto'])
-def text(message):
-    chatid = message.chat.id
-    bot.send_photo(chat_id, open('win8.png', 'rb'))
-
 def neko(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     query = update.callback_query
