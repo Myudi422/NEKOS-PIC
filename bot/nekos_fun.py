@@ -28,7 +28,7 @@ from telegram.ext import CallbackContext
 def asfile(update: Update, context: CallbackContext) -> None:
     bot = context.bot
     query = update.callback_query
-    message = query.message
+    message = query.message, update.message.from_user.id
     data = query.data.split(", ")
     query_type = data[0]
     user_id = data[1]
@@ -56,4 +56,15 @@ def asfile(update: Update, context: CallbackContext) -> None:
             bot.answer_callback_query(query.id,
                                       text="kamu, tidak diizinkan, untuk menghapus!."
                                       )
+
+    elif query_type == "neko":
+        if update.message.from_user.id == int(user_id):
+            bot.answer_callback_query(update.message.from_user.id,
+                                      text="foto sudah terhapus!"
+                                      )
+            message.delete()
+        else:
+            bot.answer_callback_query(update.message.from_user.id,
+                                      text="kamu, tidak diizinkan, untuk menghapus!."
+                                      )                                  
        
