@@ -565,7 +565,7 @@ def dva(update: Update, context: CallbackContext) -> None:
 
 def get_url():
     contents = requests.get('https://api.waifu.im/sfw/waifu').json()
-    url = contents['file']
+    url = contents['url']
     return url
 def get_image_url():
     allowed_extension = ['jpg','jpeg','png']
