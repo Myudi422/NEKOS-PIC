@@ -463,14 +463,6 @@ def kuni(update: Update, context: CallbackContext) -> None:
     msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
 
 
-def waifu(update: Update, context: CallbackContext) -> None:
-    msg = update.effective_message
-    target = "waifu"
-    link = nekos.img(target)
-    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"), InlineKeyboardButton(text=f"Direct link",url=link)]]
-    msg.reply_video(link,reply_markup=InlineKeyboardMarkup(keyboard))
-
-
 
 def kiss(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
@@ -582,7 +574,7 @@ def get_image_url():
     return url
 
 @run_async
-def bop(update, context):
+def waifu(update, context):
     url = get_image_url()
     chat_id = update.message.chat_id
     context.bot.send_photo(chat_id=chat_id, photo=url)
