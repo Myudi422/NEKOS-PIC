@@ -26,6 +26,7 @@ import logging
 import nekos
 import os
 import re
+from telegram.ext.dispatcher import run_async
 from telegram import Update
 from typing import Callable, List
 import random
@@ -463,6 +464,8 @@ def kuni(update: Update, context: CallbackContext) -> None:
 
 
 
+
+
 def kiss(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     target = "kiss"
@@ -562,7 +565,7 @@ def dva(update: Update, context: CallbackContext) -> None:
 
 def get_url():
     contents = requests.get('https://api.waifu.im/sfw/waifu').json()
-    url = contents['url']
+    url = contents['file']
     return url
 def get_image_url():
     allowed_extension = ['jpg','jpeg','png']
