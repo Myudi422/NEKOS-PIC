@@ -26,12 +26,13 @@ import logging
 import nekos
 import os
 import re
+from telegram.ext.dispatcher import run_async
 from telegram import Update
 from typing import Callable, List
 import random
 
 from telegram.ext import (CallbackContext,
-                          run_async, Updater, CommandHandler, MessageHandler, Filters)
+                          run_async, Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler)
 
 from telegram import (ParseMode, Update, InlineKeyboardMarkup, 
                       InlineKeyboardButton, ReplyKeyboardMarkup, 
@@ -565,3 +566,25 @@ def dva(update: Update, context: CallbackContext) -> None:
     keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, hexa"),InlineKeyboardButton(text=f"Direct link",url=f"https://dva.computerfreaker.cf/{link[0]}")]]
     keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {message.from_user.id}")]]
     message.reply_photo(f"https://dva.computerfreaker.cf/{link[0]}",reply_markup=InlineKeyboardMarkup(keyboard))
+
+# buat random waifu
+
+def get_url():
+    contents = requests.get('https://random.dog/woof.json').json()
+    url = contents['url']
+    return url
+
+def get_image_url():
+    allowed_extension = ['jpg','jpeg','png']
+    file_extension = ''
+    while file_extension not in allowed_extension:
+        url = get_url()
+        file_extension = re.search("([^.]*)$",url).group(1).lower()
+    return url
+
+@run_async
+def bop(update, context):
+    url = get_image_url()
+    chat_id = update.message.chat_id
+    context.bot.send_photo(chat_id=chat_id, photo=url)
+    
