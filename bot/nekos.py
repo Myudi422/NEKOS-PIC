@@ -26,7 +26,6 @@ import logging
 import nekos
 import os
 import re
-from telegram.ext.dispatcher import run_async
 from telegram import Update
 from typing import Callable, List
 import random
