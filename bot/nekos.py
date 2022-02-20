@@ -570,10 +570,9 @@ def dva(update: Update, context: CallbackContext) -> None:
 # buat random waifu
 
 def get_url():
-    contents = requests.get('https://random.dog/woof.json').json()
-    url = contents['url']
+    contents = requests.get('https://arugaz.herokuapp.com/api/nekonime').json()
+    url = contents['result']
     return url
-
 def get_image_url():
     allowed_extension = ['jpg','jpeg','png']
     file_extension = ''
@@ -587,4 +586,3 @@ def bop(update, context):
     url = get_image_url()
     chat_id = update.message.chat_id
     context.bot.send_photo(chat_id=chat_id, photo=url)
-    
