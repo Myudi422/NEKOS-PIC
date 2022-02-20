@@ -564,8 +564,8 @@ def dva(update: Update, context: CallbackContext) -> None:
 # buat random waifu
 
 def get_url():
-    contents = requests.get('https://api.waifu.im/sfw/waifu').json()
-    url = contents['url']
+    contents = requests.get('https://arugaz.herokuapp.com/api/nekonime').json()
+    url = contents['result']
     return url
 def get_image_url():
     allowed_extension = ['jpg','jpeg','png']
