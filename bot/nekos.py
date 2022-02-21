@@ -580,3 +580,75 @@ def waifu(update, context):
     url = get_image_url()
     chat_id = update.message.chat_id
     context.bot.send_photo(chat_id=chat_id, photo=url)
+
+# Buat random image di folder source
+
+def send_photo(src: str, message=None):
+    """Generates a function for sending a photo with an optional message"""
+    def send(update: Update, context: CallbackContext):
+        if message != None:
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text=message)
+        context.bot.send_photo(
+            chat_id=update.effective_chat.id,
+            photo=open(f"./media/{src}", "rb"),
+        )
+    return send
+
+
+def send_video(src: str, message=None):
+    """Generates a function for sending a video with an optional message"""
+    def send(update: Update, context: CallbackContext):
+        if message != None:
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text=message)
+        context.bot.send_video(
+            chat_id=update.effective_chat.id,
+            video=open(f"./media/{src}", "rb"),
+            supports_streaming=True
+        )
+    return send
+
+
+def choose_photo(folder: str, message=None, caption=None):
+    """Generates a function for sending a photo with an optional message"""
+    def send(update: Update, context: CallbackContext):
+        if message != None:
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text=message)
+        filename = random.choice(os.listdir(f"./media/{folder}"))
+        context.bot.send_photo(
+            chat_id=update.effective_chat.id,
+            photo=open(f"./media/{folder}/{filename}", "rb"),
+            caption=caption
+        )
+    return send
+
+
+def choose_video(folder: str, message=None, caption=None):
+    """Generates a function for sending a video with an optional message"""
+    def send(update: Update, context: CallbackContext):
+        if message != None:
+            context.bot.send_message(
+                chat_id=update.effective_chat.id,
+                message=message
+            )
+        filename = random.choice(os.listdir(f"./media/{folder}"))
+        context.bot.send_video(
+            chat_id=update.effective_chat.id,
+            video=open(f"./media/{folder}/{filename}", "rb"),
+            supports_streaming=True,
+            caption=caption
+        )
+    return send
+
+def re_scream(update, context):
+    file = random.choice(os.listdir("media/pic"))
+    context.bot.send_message(
+        chat_id=update.effective_chat.id, text="random song")
+    if "mp3" in file:
+        context.bot.send_audio(
+            chat_id=update.effective_chat.id, audio=open("./media/re/"+file, "rb"))
+    else:
+        context.bot.send_video(chat_id=update.effective_chat.id, video=open(
+            "./media/re/"+file, "rb"), supports_streaming=True)
