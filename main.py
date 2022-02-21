@@ -60,7 +60,7 @@ updater = Updater(CONFIG['bot_token'], use_context=True)
 
 updater.dispatcher.add_handler(CommandHandler('pic', pic))
 updater.dispatcher.add_handler(CommandHandler('choose_photo', choose_photo))
-updater.dispatcher.add_handler(CommandHandler('re_scream', re_scream))
+updater.dispatcher.add_handler(CommandHandler('pp', pp))
 updater.dispatcher.add_handler(CommandHandler('waifu',waifu))
 updater.dispatcher.add_handler(CommandHandler('help1', chelp1))
 updater.dispatcher.add_handler(CallbackQueryHandler(help1, pattern='zero_.*'))

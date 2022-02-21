@@ -642,13 +642,12 @@ def choose_video(folder: str, message=None, caption=None):
         )
     return send
 
-def re_scream(update, context):
+def pp(update, context):
     file = random.choice(os.listdir("media/pic"))
-    context.bot.send_message(
-        chat_id=update.effective_chat.id, text="random song")
+
     if "png" in file:
         context.bot.send_photo(
-            chat_id=update.effective_chat.id, photo=open("./media/pic/"+file, "rb"), caption=caption)
+            chat_id=update.effective_chat.id, photo=open("./media/pic/"+file, "rb"))
     else:
         context.bot.send_video(chat_id=update.effective_chat.id, video=open(
             "./media/pic/"+file, "rb"), supports_streaming=True)
