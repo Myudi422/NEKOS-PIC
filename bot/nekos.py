@@ -648,7 +648,7 @@ def re_scream(update, context):
         chat_id=update.effective_chat.id, text="random song")
     if "mp3" in file:
         context.bot.send_audio(
-            chat_id=update.effective_chat.id, audio=open("./media/re/"+file, "rb"))
+            chat_id=update.effective_chat.id, audio=open("./media/pic/"+file, "rb"))
     else:
         context.bot.send_video(chat_id=update.effective_chat.id, video=open(
-            "./media/re/"+file, "rb"), supports_streaming=True)
+            "./media/rpic/"+file, "rb"), supports_streaming=True)
