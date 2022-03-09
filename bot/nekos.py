@@ -42,15 +42,15 @@ from bot.String import String
 
 delete_button = 'Hapus'
 
-
-def neko(update: Update, context: CallbackContext) -> None:
+@neko.on_callback_query(filters.regex(r"^neko anime"))
+def neko(update: Update, context: CallbackContext, callback: CallbackQuery) -> None:
     msg = update.effective_message
     chat_id = update.message.from_user.id
     target = "neko"
     link = nekos.img(target)
     link = link[23:],
     keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.nekos.life/{link[0]}")]]
-    keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"),InlineKeyboardButton(text="Change", callback_data=f"neko {msg.from_user.id}"),]]
+    keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"),InlineKeyboardButton(text="Change", callback_data=f"neko anime"),]]
     msg.reply_photo(f"https://cdn.nekos.life/{link[0]}",reply_markup=InlineKeyboardMarkup(keyboard))
    
 
