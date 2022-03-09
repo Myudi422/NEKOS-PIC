@@ -42,7 +42,7 @@ from bot.String import String
 
 delete_button = 'Hapus'
 
-@neko.on_callback_query(filters.regex(r"^neko anime"))
+@nekos.on_callback_query(filters.regex(r"^neko anime"))
 def neko(update: Update, context: CallbackContext, callback: CallbackQuery) -> None:
     msg = update.effective_message
     chat_id = update.message.from_user.id
