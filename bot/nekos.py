@@ -38,20 +38,19 @@ from telegram import (ParseMode, Update, InlineKeyboardMarkup,
                       InlineKeyboardButton, ReplyKeyboardMarkup, 
                       KeyboardButton)
 
-from pyrogram.types import CallbackQuery, Message
 from bot.String import String
 
 delete_button = 'Hapus'
 
-@neko.on_callback_query(filters.regex(r"^neko$"))
-def neko(update: Update, context: CallbackContext, CallbackQuery) -> None:
+
+def neko(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
     chat_id = update.message.from_user.id
     target = "neko"
     link = nekos.img(target)
     link = link[23:],
     keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.nekos.life/{link[0]}")]]
-    keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"),InlineKeyboardButton(text="Change", callback_data=f"neko"),]]
+    keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}"),InlineKeyboardButton(text="Change", callback_data=f"zero_help"),]]
     msg.reply_photo(f"https://cdn.nekos.life/{link[0]}",reply_markup=InlineKeyboardMarkup(keyboard))
    
 
