@@ -580,6 +580,8 @@ def waifu(update, context):
     url = get_image_url()
     chat_id = update.message.chat_id
     context.bot.send_photo(chat_id=chat_id, photo=url)
+    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}")]]
+
 
 # Buat random image di folder source
 
