@@ -49,7 +49,7 @@ def asfile(update: Update, context: CallbackContext) -> None:
     elif query_type == "neko_delete":
         if query.from_user.id == int(user_id):
             bot.answer_callback_query(query.id,
-                                      text="foto sudah terhapus!"
+                                      text="Sudah Terhapus!"
                                       )
             message.delete()
         else:
