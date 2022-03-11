@@ -578,7 +578,7 @@ def get_image_url():
 @run_async
 def waifu(update, context: CallbackContext):
     url = get_image_url()
-    message = update.effective_message
+    chat_id = update.message.chat_id
     context.bot.send_photo(chat_id=chat_id, photo=url)
     keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}")]]
 
