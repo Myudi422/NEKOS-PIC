@@ -21,7 +21,6 @@
 # SOFTWARE.
 
 
-from cgitb import text
 from telegram import Update
 
 from telegram.ext import CallbackContext
@@ -57,8 +56,4 @@ def asfile(update: Update, context: CallbackContext) -> None:
             bot.answer_callback_query(query.id,
                                       text="kamu, tidak diizinkan, untuk menghapus!."
                                       )
-
-    elif query_type == "delete_list":
-        bot.answer_callback_query(query.id,
-                                  text="Sudah Terhapus!")                                 
        
