@@ -45,12 +45,13 @@ delete_button = 'Hapus'
 
 def neko(update: Update, context: CallbackContext) -> None:
     msg = update.effective_message
+    hapus = update.message
     chat_id = update.message.from_user.id
     target = "neko"
     link = nekos.img(target)
     link = link[23:],
     keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, neko"),InlineKeyboardButton(text=f"Direct link",url=f"https://cdn.nekos.life/{link[0]}")]]
-    keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"delete_list"),InlineKeyboardButton(text="Change", callback_data=f"zero_help"),]]
+    keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"delete_list {msg}"),InlineKeyboardButton(text="Change", callback_data=f"zero_help"),]]
     msg.reply_photo(f"https://cdn.nekos.life/{link[0]}",reply_markup=InlineKeyboardMarkup(keyboard))
    
 
