@@ -26,13 +26,13 @@ import logging
 import nekos
 import os, threading, math
 import re
-from telegram.ext.dispatcher import run_async
+import telegram.ext.dispatcher
 from telegram import Update
 from typing import Callable, List
 import random
 
 from telegram.ext import (CallbackContext,
-                          run_async, Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler)
+                          Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler)
 
 from telegram import (ParseMode, Update, InlineKeyboardMarkup, 
                       InlineKeyboardButton, ReplyKeyboardMarkup, 
@@ -575,7 +575,6 @@ def get_image_url():
         file_extension = re.search("([^.]*)$",url).group(1).lower()
     return url
 
-@run_async
 def waifu(update, context: CallbackContext):
     url = get_image_url()
     chat_id = update.message.chat_id
