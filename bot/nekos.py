@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 
-import requests
+
 import logging
 import nekos
 import os, threading, math
