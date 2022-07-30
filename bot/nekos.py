@@ -21,18 +21,18 @@
 # SOFTWARE.
 
 
-
+import requests
 import logging
 import nekos
 import os, threading, math
 import re
-import telegram.ext.dispatcher
+from telegram.ext.dispatcher import run_async
 from telegram import Update
 from typing import Callable, List
 import random
 
 from telegram.ext import (CallbackContext,
-                          Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler)
+                          run_async, Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler)
 
 from telegram import (ParseMode, Update, InlineKeyboardMarkup, 
                       InlineKeyboardButton, ReplyKeyboardMarkup, 
@@ -560,3 +560,161 @@ def dva(update: Update, context: CallbackContext) -> None:
     keyboard = [[InlineKeyboardButton(text="Send as file", callback_data=f"neko_callback, {link}, hexa"),InlineKeyboardButton(text=f"Direct link",url=f"https://dva.computerfreaker.cf/{link[0]}")]]
     keyboard += [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {message.from_user.id}")]]
     message.reply_photo(f"https://dva.computerfreaker.cf/{link[0]}",reply_markup=InlineKeyboardMarkup(keyboard))
+
+# buat random waifu
+
+def get_url():
+    contents = requests.get('https://arugaz.herokuapp.com/api/nekonime').json()
+    url = contents['result']
+    return url
+def get_image_url():
+    allowed_extension = ['jpg','jpeg','png']
+    file_extension = ''
+    while file_extension not in allowed_extension:
+        url = get_url()
+        file_extension = re.search("([^.]*)$",url).group(1).lower()
+    return url
+
+@run_async
+def waifu(update, context: CallbackContext):
+    url = get_image_url()
+    chat_id = update.message.chat_id
+    context.bot.send_photo(chat_id=chat_id, photo=url)
+    keyboard = [[InlineKeyboardButton(text=delete_button, callback_data=f"neko_delete, {msg.from_user.id}")]]
+
+
+# Buat random image di folder source
+
+def send_photo(src: str, message=None):
+    """Generates a function for sending a photo with an optional message"""
+    def send(update: Update, context: CallbackContext):
+        if message != None:
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text=message)
+        context.bot.send_photo(
+            chat_id=update.effective_chat.id,
+            photo=open(f"./media/{src}", "rb"),
+        )
+    return send
+
+
+def send_video(src: str, message=None):
+    """Generates a function for sending a video with an optional message"""
+    def send(update: Update, context: CallbackContext):
+        if message != None:
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text=message)
+        context.bot.send_video(
+            chat_id=update.effective_chat.id,
+            video=open(f"./media/{src}", "rb"),
+            supports_streaming=True
+        )
+    return send
+
+
+def choose_photo(folder: str, message=None, caption=None):
+    """Generates a function for sending a photo with an optional message"""
+    def send(update: Update, context: CallbackContext):
+        if message != None:
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text=message)
+        filename = random.choice(os.listdir(f"./media/{folder}"))
+        context.bot.send_photo(
+            chat_id=update.effective_chat.id,
+            photo=open(f"./media/{folder}/{filename}", "rb"),
+            caption=caption
+        )
+    return send
+
+
+def choose_video(folder: str, message=None, caption=None):
+    """Generates a function for sending a video with an optional message"""
+    def send(update: Update, context: CallbackContext):
+        if message != None:
+            context.bot.send_message(
+                chat_id=update.effective_chat.id,
+                message=message
+            )
+        filename = random.choice(os.listdir(f"./media/{folder}"))
+        context.bot.send_video(
+            chat_id=update.effective_chat.id,
+            video=open(f"./media/{folder}/{filename}", "rb"),
+            supports_streaming=True,
+            caption=caption
+        )
+    return send
+
+def pp(update, context):
+    file = random.choice(os.listdir("media/pic"))
+
+    if "png" in file:
+        context.bot.send_photo(
+            chat_id=update.effective_chat.id, photo=open("./media/pic/"+file, "rb"))
+    else:
+        context.bot.send_video(chat_id=update.effective_chat.id, video=open(
+            "./media/pic/"+file, "rb"), supports_streaming=True)
+
+# image donwload            
+# Configuration Start
+OID = 1005051233281285
+COOKIES = "SUB=_2AkMhFc9hf8NhqwJRmPoRym_jaI9_ygvEiebDAHzsJxJjHlE47Gaj8oPkdVHDdzd9ToAkUSPIsxRx; SUBP=0033WrSXqPxfM72-Ws9jqgMF55529P9D9WWM2vn1KHS_k1aSj6DvSDWv; SINAGLOBAL=7552724259118.417.1447641174437; ULV=1447691774405:2:2:2:6434341784127.688.1447691774390:1447641174455; YF-Page-G0=7f5e11c19f51c6954c5e18e40c0b1444; _s_tentry=-; Apache=6434341784127.688.1447691774390; USRANIME=usrmdinst_29"; # Your cookies.
+CRAWL_PHOTOS_NUMBER = 186
+# Configuration END
+
+COOKIES = dict((l.split('=') for l in COOKIES.split('; ')))
+#先创建保存图片的目录
+SAVE_PATH="image"+str(OID) + "./media/pic/"
+if not os.path.exists(SAVE_PATH):
+	os.makedirs(SAVE_PATH)
+TEMP_LastMid = ""
+
+def save_image(image_name):
+	#if not os.path.isfile(SAVE_PATH + image_name):
+	sina_image_url = 'http://ww1.sinaimg.cn/large/' + image_name
+	response = requests.get(sina_image_url, stream=True)
+	image = response.content
+	try:
+		print(image_name)
+		with open(SAVE_PATH+image_name,"wb") as image_object:
+			image_object.write(image)
+			return
+	except IOError:
+		print("IO Error\n")
+		return
+	finally:
+		image_object.close
+
+
+
+def get_album_photos_url(page):
+	global TEMP_LastMid
+	data={
+		'ajwvr':6,
+		'filter':'wbphoto|||v6',
+		'page': page,
+		'count':20,
+		'module_id':'profile_photo',
+		'oid':OID,
+		'uid':'',
+		'lastMid':TEMP_LastMid,
+		'lang':'zh-cn',
+		'_t':1,
+		'callback':'STK_' + str(random.randint(10000000000000, 900000000000000))
+	}
+	#print(data)
+	#print(COOKIES)
+	album_request_result = requests.get('http://photo.weibo.com/page/waterfall',  params = data, cookies = COOKIES).text
+	#print(album_request.headers)
+	TEMP_LastMid = re.compile(r'"lastMid":"(\d+)"').findall(album_request_result)
+	print(TEMP_LastMid)
+	return (re.compile(r'(\w+.png|\w+.gif|\w+.jpg)').findall(album_request_result))
+
+if __name__ == '__main__':
+	for i in range(1, int(math.ceil(CRAWL_PHOTOS_NUMBER / 20.0))):
+		threads = []
+		for image_name in get_album_photos_url(i):
+			#save_image(image_name);
+			threads.append(threading.Thread(target=save_image, args=(image_name,)))
+		for t in threads:
+			#t.setDaemon(True)
+			t.start()
